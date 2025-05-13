@@ -151,44 +151,45 @@
             }
         }
         
-        /* Testimonial animation */
-        @keyframes slide {
-            0% {
-                transform: translateX(0);
-                opacity: 0;
-            }
-            10% {
-                transform: translateX(0);
-                opacity: 1;
-            }
-            40% {
-                transform: translateX(0);
-                opacity: 1;
-            }
-            50% {
-                transform: translateX(-100%);
-                opacity: 0;
-            }
-            60% {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            70% {
-                transform: translateX(0);
-                opacity: 1;
-            }
-            90% {
-                transform: translateX(0);
-                opacity: 1;
-            }
-            100% {
-                transform: translateX(0);
-                opacity: 0;
-            }
+        /* Testimonial slider */
+        .testimonial-slider {
+            position: relative;
+            overflow: hidden;
+            height: 100%;
         }
         
-        .testimonial-animation {
-            animation: slide 15s infinite;
+        .testimonial-item {
+            display: none;
+            animation: fadeEffect 1s ease-in-out;
+        }
+        
+        .testimonial-item.active {
+            display: block;
+        }
+        
+        @keyframes fadeEffect {
+            from {opacity: 0.7;}
+            to {opacity: 1;}
+        }
+        
+        .testimonial-dots {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin: 0 5px;
+            background-color: #ddd;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .dot.active {
+            background-color: #6366F1;
         }
     </style>
 </head>
@@ -438,92 +439,98 @@
                 </p>
             </div>
             
-            <div class="relative overflow-hidden">
-                <div class="testimonial-slider flex flex-nowrap">
-                    <!-- Testimonial 1 -->
-                    <div class="testimonial-animation min-w-full">
-                        <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-100 max-w-2xl mx-auto">
-                            <div class="flex items-center mb-6">
-                                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                                    <span class="text-primary text-xl font-bold">SR</span>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-bold">Ses Rika</h4>
-                                    <p class="text-gray-600">Klien</p>
-                                </div>
-                                <div class="ml-auto">
-                                    <div class="flex text-yellow-500">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
+            <div class="testimonial-slider max-w-2xl mx-auto">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-item active">
+                    <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-primary text-xl font-bold">SR</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold">Ses Rika</h4>
+                                <p class="text-gray-600">Klien</p>
+                            </div>
+                            <div class="ml-auto">
+                                <div class="flex text-yellow-500">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
                                 </div>
                             </div>
-                            <p class="text-gray-600 italic">
-                                "Website yang dibuat oleh AppHaze sangat profesional dan responsif. Tim mereka sangat kooperatif dan selalu siap membantu. Kami sangat puas dengan hasilnya dan akan merekomendasikan layanan mereka kepada semua rekan bisnis kami."
-                            </p>
                         </div>
+                        <p class="text-gray-600 italic">
+                            "Website yang dibuat oleh AppHaze sangat profesional dan responsif. Tim mereka sangat kooperatif dan selalu siap membantu. Kami sangat puas dengan hasilnya dan akan merekomendasikan layanan mereka kepada semua rekan bisnis kami."
+                        </p>
                     </div>
-                    
-                    <!-- Testimonial 2 -->
-                    <div class="testimonial-animation min-w-full" style="animation-delay: 5s;">
-                        <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-100 max-w-2xl mx-auto">
-                            <div class="flex items-center mb-6">
-                                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                                    <span class="text-primary text-xl font-bold">KC</span>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-bold">Kopi Candu</h4>
-                                    <p class="text-gray-600">Coffee Shop</p>
-                                </div>
-                                <div class="ml-auto">
-                                    <div class="flex text-yellow-500">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half-alt"></i>
-                                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-item">
+                    <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-primary text-xl font-bold">KC</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold">Kopi Candu</h4>
+                                <p class="text-gray-600">Coffee Shop</p>
+                            </div>
+                            <div class="ml-auto">
+                                <div class="flex text-yellow-500">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
                                 </div>
                             </div>
-                            <p class="text-gray-600 italic">
-                                "Desain logo dan materi promosi yang dibuat oleh AppHaze benar-benar membantu brand kami menonjol. Mereka memahami esensi bisnis kami dan menerjemahkannya dengan sangat baik ke dalam desain visual. Terima kasih AppHaze!"
-                            </p>
                         </div>
+                        <p class="text-gray-600 italic">
+                            "Desain logo dan materi promosi yang dibuat oleh AppHaze benar-benar membantu brand kami menonjol. Mereka memahami esensi bisnis kami dan menerjemahkannya dengan sangat baik ke dalam desain visual. Terima kasih AppHaze!"
+                        </p>
                     </div>
-                    
-                    <!-- Testimonial 3 -->
-                    <div class="testimonial-animation min-w-full" style="animation-delay: 10s;">
-                        <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-100 max-w-2xl mx-auto">
-                            <div class="flex items-center mb-6">
-                                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                                    <span class="text-primary text-xl font-bold">FF</span>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-bold">FreshFood</h4>
-                                    <p class="text-gray-600">Aplikasi Pengiriman Makanan</p>
-                                </div>
-                                <div class="ml-auto">
-                                    <div class="flex text-yellow-500">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-item">
+                    <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-primary text-xl font-bold">FF</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold">FreshFood</h4>
+                                <p class="text-gray-600">Aplikasi Pengiriman Makanan</p>
+                            </div>
+                            <div class="ml-auto">
+                                <div class="flex text-yellow-500">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
                                 </div>
                             </div>
-                            <p class="text-gray-600 italic">
-                                "UI/UX design untuk aplikasi kami yang dibuat oleh AppHaze sangat intuitif dan user-friendly. Hasilnya, kami mengalami peningkatan signifikan dalam retensi pengguna dan konversi. Kerja sama profesional yang luar biasa!"
-                            </p>
                         </div>
+                        <p class="text-gray-600 italic">
+                            "UI/UX design untuk aplikasi kami yang dibuat oleh AppHaze sangat intuitif dan user-friendly. Hasilnya, kami mengalami peningkatan signifikan dalam retensi pengguna dan konversi. Kerja sama profesional yang luar biasa!"
+                        </p>
                     </div>
+                </div>
+                
+                <!-- Testimonial Navigation Dots -->
+                <div class="testimonial-dots mt-6">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                    <span class="dot" data-index="2"></span>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- About Us Section -->
     <section id="about" class="py-16 bg-blue-50">
@@ -593,11 +600,14 @@
                                     <a href="#" class="text-white hover:text-blue-200">
                                         <i class="fab fa-linkedin"></i>
                                     </a>
-                                    <a href="#" class="text-white hover:text-blue-200">
+                                    <a href="https://www.instagram.com/repan.js/" class="text-white hover:text-blue-200">
                                         <i class="fab fa-instagram"></i>
                                     </a>
                                     <a href="#" class="text-white hover:text-blue-200">
                                         <i class="fab fa-behance"></i>
+                                    </a>
+                                    <a href="https://github.com/RevanAlfonso" class="text-white hover:text-blue-200">
+                                        <i class="fab fa-github"></i>
                                     </a>
                                 </div>
                             </div>
@@ -611,7 +621,7 @@
                     <!-- Team Member 2 -->
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden group">
                         <div class="relative">
-                            <img src="/api/placeholder/300/300" alt="Team Member" class="w-full">
+                            <img src="./img/0ccacabc-c3cb-4c2b-8be7-ba709bb51583.jpeg" alt="Team Member" class="w-full">
                             <div class="absolute inset-0 bg-primary bg-opacity-70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
                                 <div class="flex space-x-4">
                                     <a href="#" class="text-white hover:text-blue-200">
@@ -628,14 +638,14 @@
                         </div>
                         <div class="p-4 text-center">
                             <h4 class="font-bold">Marcello Julien Manik</h4>
-                            <p class="text-gray-600 text-sm">UI Designer</p>
+                            <p class="text-gray-600 text-sm">UI/UX Designer</p>
                         </div>
                     </div>
                     
                     <!-- Team Member 3 -->
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden group">
                         <div class="relative">
-                            <img src="/api/placeholder/300/300" alt="Team Member" class="w-full">
+                            <img src="./img/0ccacabc-c3cb-4c2b-8be7-ba709bb51583.jpeg" alt="Team Member" class="w-full">
                             <div class="absolute inset-0 bg-primary bg-opacity-70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
                                 <div class="flex space-x-4">
                                     <a href="#" class="text-white hover:text-blue-200">
@@ -651,15 +661,15 @@
                             </div>
                         </div>
                         <div class="p-4 text-center">
-                            <h4 class="font-bold">TolTol3</h4>
-                            <p class="text-gray-600 text-sm">UI/UX Designer</p>
+                            <h4 class="font-bold">Faris Mustaqim Kurniawan</h4>
+                            <p class="text-gray-600 text-sm">Web Developer</p>
                         </div>
                     </div>
                     
                     <!-- Team Member 4 -->
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden group">
                         <div class="relative">
-                            <img src="/api/placeholder/300/300" alt="Team Member" class="w-full">
+                            <img src="./img/0ccacabc-c3cb-4c2b-8be7-ba709bb51583.jpeg" alt="Team Member" class="w-full">
                             <div class="absolute inset-0 bg-primary bg-opacity-70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
                                 <div class="flex space-x-4">
                                     <a href="#" class="text-white hover:text-blue-200">
@@ -675,8 +685,8 @@
                             </div>
                         </div>
                         <div class="p-4 text-center">
-                            <h4 class="font-bold">TolTol4</h4>
-                            <p class="text-gray-600 text-sm">Graphic Designer</p>
+                            <h4 class="font-bold">Abhinaya Thirza Xavier</h4>
+                            <p class="text-gray-600 text-sm">Graphic Designer | Social Media</p>
                         </div>
                     </div>
                 </div>
@@ -852,7 +862,7 @@
                 <!-- Project 1 -->
                 <div class="portfolio-card bg-white rounded-xl shadow-lg overflow-hidden">
                     <div class="relative overflow-hidden h-56">
-                        <img src="/api/placeholder/400/300" alt="Portfolio" class="w-full h-full object-cover">
+                        <img src="./img/ProjectWeb1.png" alt="Portfolio" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-primary bg-opacity-80 flex items-center justify-center opacity-0 hover:opacity-100 transition duration-300">
                             <a href="#" class="bg-white text-primary hover:bg-gray-100 py-2 px-4 rounded-full font-medium">
                                 Lihat Detail
@@ -860,12 +870,14 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">BeautyShop E-commerce</h3>
-                        <p class="text-gray-600 mb-4">Website toko online untuk brand kecantikan dengan fitur lengkap</p>
+                        <h3 class="text-xl font-bold mb-2">KopiSehati.id Profile</h3>
+                        <p class="text-gray-600 mb-4">Website profil untuk brand kopi premium, menghadirkan informasi produk, cerita brand, dan ajakan aksi yang jelas.
+
+                        </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-100 text-primary text-xs py-1 px-2 rounded">WordPress</span>
-                            <span class="bg-blue-100 text-primary text-xs py-1 px-2 rounded">WooCommerce</span>
-                            <span class="bg-blue-100 text-primary text-xs py-1 px-2 rounded">Custom CSS</span>
+                            <span class="bg-blue-100 text-primary text-xs py-1 px-2 rounded">HTML</span>
+                            <span class="bg-blue-100 text-primary text-xs py-1 px-2 rounded">TailwindCSS</span>
+                            <span class="bg-blue-100 text-primary text-xs py-1 px-2 rounded">JavaScript</span>
                         </div>
                     </div>
                 </div>
@@ -873,7 +885,7 @@
                 <!-- Project 2 -->
                 <div class="portfolio-card bg-white rounded-xl shadow-lg overflow-hidden">
                     <div class="relative overflow-hidden h-56">
-                        <img src="/api/placeholder/400/300" alt="Portfolio" class="w-full h-full object-cover">
+                        <img src="./img/ProjectWeb2.png" alt="Portfolio" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-primary bg-opacity-80 flex items-center justify-center opacity-0 hover:opacity-100 transition duration-300">
                             <a href="#" class="bg-white text-primary hover:bg-gray-100 py-2 px-4 rounded-full font-medium">
                                 Lihat Detail
@@ -881,12 +893,12 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">TechCorp Company Profile</h3>
-                        <p class="text-gray-600 mb-4">Website perusahaan IT dengan animasi modern dan responsif</p>
+                        <h3 class="text-xl font-bold mb-2">Hijau Langit – Website Kampanye Lingkungan dan Gerakan Tanam Pohon</h3>
+                        <p class="text-gray-600 mb-4">Website kampanye penghijauan yang mengajak masyarakat untuk berpartisipasi dalam gerakan tanam pohon demi masa depan bumi yang lebih hijau.</p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-100 text-primary text-xs py-1 px-2 rounded">React.js</span>
+                            <span class="bg-blue-100 text-primary text-xs py-1 px-2 rounded">HTML</span>
                             <span class="bg-blue-100 text-primary text-xs py-1 px-2 rounded">TailwindCSS</span>
-                            <span class="bg-blue-100 text-primary text-xs py-1 px-2 rounded">GSAP</span>
+                            <span class="bg-blue-100 text-primary text-xs py-1 px-2 rounded">JavaScript</span>
                         </div>
                     </div>
                 </div>
@@ -918,7 +930,7 @@
                 <!-- Project 1 -->
                 <div class="portfolio-card bg-white rounded-xl shadow-lg overflow-hidden">
                     <div class="relative overflow-hidden h-56">
-                        <img src="/api/placeholder/400/300" alt="Portfolio" class="w-full h-full object-cover">
+                        <img src="./img/projectUI1.png" alt="Portfolio" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-primary bg-opacity-80 flex items-center justify-center opacity-0 hover:opacity-100 transition duration-300">
                             <a href="#" class="bg-white text-primary hover:bg-gray-100 py-2 px-4 rounded-full font-medium">
                                 Lihat Detail
@@ -926,12 +938,11 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">EduLearn Mobile App</h3>
-                        <p class="text-gray-600 mb-4">UI/UX design untuk aplikasi pembelajaran online</p>
+                        <h3 class="text-xl font-bold mb-2">GearMotion - Ecommerce Bicycle</h3>
+                        <p class="text-gray-600 mb-4">UI/UX design untuk Website penjualan sepeda dan aksesoris</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="bg-blue-100 text-primary text-xs py-1 px-2 rounded">Figma</span>
                             <span class="bg-blue-100 text-primary text-xs py-1 px-2 rounded">User Research</span>
-                            <span class="bg-blue-100 text-primary text-xs py-1 px-2 rounded">Wireframes</span>
                         </div>
                     </div>
                 </div>
@@ -1276,6 +1287,72 @@
                     top: 0,
                     behavior: 'smooth'
                 });
+            });
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        
+        // Testimonial Slider
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initial setup
+            let currentSlide = 0;
+            const testimonials = document.querySelectorAll('.testimonial-item');
+            const dots = document.querySelectorAll('.dot');
+            const totalSlides = testimonials.length;
+            
+            // Function to show specific slide
+            function showSlide(n) {
+                // Hide all slides
+                testimonials.forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Remove active state from all dots
+                dots.forEach(dot => {
+                    dot.classList.remove('active');
+                });
+                
+                // Show the current slide and activate dot
+                testimonials[n].classList.add('active');
+                dots[n].classList.add('active');
+                
+                // Update current slide
+                currentSlide = n;
+            }
+            
+            // Add click event to dots
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const slideIndex = parseInt(this.getAttribute('data-index'));
+                    showSlide(slideIndex);
+                });
+            });
+            
+            // Auto slide function
+            function autoSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                showSlide(currentSlide);
+            }
+            
+            // Set auto slide timer (change slide every 5 seconds)
+            const slideInterval = setInterval(autoSlide, 5000);
+            
+            // Pause auto slide on hover
+            const sliderContainer = document.querySelector('.testimonial-slider');
+            sliderContainer.addEventListener('mouseenter', function() {
+                clearInterval(slideInterval);
+            });
+            
+            // Resume auto slide when mouse leaves
+            sliderContainer.addEventListener('mouseleave', function() {
+                setInterval(autoSlide, 5000);
             });
         });
     </script>
